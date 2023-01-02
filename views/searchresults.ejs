@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            background-image: url("background3.jpg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            -webkit-text-stroke: 1px blue;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+        <a class="navbar-brand" style="color: rgb(191, 255, 161)">Search Results</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            </ul>
+            <form method="POST" action='/search' class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" name="Search" type="search" placeholder="Search"
+                    aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <% if(arrfinal.length==0){ %>
+        <a class="navbar-brand" style="color: rgb(255, 161, 170)">Destination not Found , </a>
+        <a class="navbar-brand" style="color: rgb(255, 161, 170)">Try searching again.</a>
+    <% } else{ %> 
+        <a class="navbar-brand" style="color: rgb(255, 161, 170)">Search Results : </a>
+        <% if(arrfinal.includes('annapurna')){ %>
+            <div class="container2">
+                <button onclick="location.href = '/annapurna';" id="annapurna" class="btn btn-secondary ml-3">Annapurna Circuit</button>
+            </div>
+        <% } %> 
+        <% if(arrfinal.includes('bali')){ %>
+            <div class="container2">
+                <button onclick="location.href = '/bali';" id="bali" class="btn btn-secondary ml-3"> Bali Island</button>
+            </div>
+        <% } %> 
+        <% if(arrfinal.includes('inca')){ %>
+            <div class="container3">
+                <button onclick="location.href = '/inca';" id="inca" class="btn btn-secondary ml-3">Inca Trail to Machu Picchu</button>
+            </div>
+        <% } %>
+        <% if(arrfinal.includes('paris')){ %>
+            <div class="container4">
+                <button onclick="location.href = '/paris';" id="paris" class="btn btn-secondary ml-3">Paris</button>
+            </div>
+        <% } %> 
+        <% if(arrfinal.includes('rome')){ %>
+            <div class="container5">
+                <button onclick="location.href = '/rome';" id="rome" class="btn btn-secondary ml-3">Rome</button>
+            </div>
+        <% } %>
+        <% if(arrfinal.includes('santorini')){ %>
+            <div class="container6">
+                <button onclick="location.href = '/santorini';" id="santorini" class="btn btn-secondary ml-3">Santorini Island</button>
+            </div>
+        <% } %>
+    <% } %>
+</body>
+</html>
