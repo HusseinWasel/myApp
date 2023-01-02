@@ -63,7 +63,8 @@ app.get('/login', function(req,res){
 
 app.post('/login', async(req,res) =>{
   const{username , password} = req.body;
-  if(username='admin' && password=='admin'){
+  if(username="admin" && password=="admin"){
+    req.session.context = req.body.username;
     res.render("home");
   }else{
     const currUser = await collection.findOne({ username: `${username}`});
@@ -74,7 +75,6 @@ app.post('/login', async(req,res) =>{
     console.log(currUser.password);
     if(password === currUser.password){
       req.session.context = req.body.username;
-      console.log("ALHAMDULLILLAH");
       res.render("home");
     }else{
     console.log("WRONG password!");
