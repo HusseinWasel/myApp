@@ -63,7 +63,7 @@ app.get('/login', function(req,res){
 
 app.post('/login', async(req,res) =>{
   const{username , password} = req.body;
-  if(username="admin" && password=="admin"){
+  if(username=="admin" && password=="admin"){
     req.session.context = req.body.username;
     res.render("home");
   }else{
