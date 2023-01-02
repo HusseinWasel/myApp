@@ -17,7 +17,7 @@ var MongoURL = 'mongodb://127.0.0.1:27017/';
 var client = new MongoClient(MongoURL);
 var database = client.db("myDB");
 var collection = database.collection("myCollection");
-collection.insertOne({username:'admin' , password: 'admin' , wantToGoList : []});
+//collection.insertOne({username:'admin' , password: 'admin' , wantToGoList : []});
 
 
 
@@ -63,7 +63,10 @@ app.get('/login', function(req,res){
 
 app.post('/login', async(req,res) =>{
   const{username , password} = req.body;
-  const currUser = await collection.findOne({ username: `${username}`});
+  if(username='admin' && password=='admin'){
+    res.render("home");
+  }else{
+    const currUser = await collection.findOne({ username: `${username}`});
   if(currUser){
     console.log(username);
     console.log(`${username}`);
@@ -87,6 +90,7 @@ else if (!currUser){
 alert("WRONG UserName and Password!");
 res.render('login',{error2: 'WRONG UserName and Password!'})
 }
+  }
 });
 //----------------------------REGISTERATION----------------------------//
 
